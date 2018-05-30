@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use Doctrine\DBAL\Types\DateTimeTzType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-//use Symfony\Component\Form\Extension\Core\Type\DateType;
+//use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -22,10 +23,13 @@ class SlovaController extends Controller
     public function new(Request $request)
     {
         $slova = new Slova();
-//        $slova->setSlovo('Бог');
+        $slova->setSlovo('НовоеСлово');
 
         $form = $this->createFormBuilder($slova)
             ->add('slovo', TextType::class)
+            ->add('addedAt', DateTimeTzType::class)
+            ->add('author', TextType::class)
+            ->add('oslove', TextType::class)
             ->add('save', SubmitType::class, array('label' => 'Скажите слово'))
             ->getForm();
 
@@ -85,9 +89,13 @@ class SlovaController extends Controller
     public function index()
     {
 //        $entityManager = $this->getDoctrine()->getManager();
+        $date = new \DateTime();
 
         $slova = new Slova();
         $slova->setSlovo('Бог');
+        $slova->setAuthor('Бог');
+        $slova->setAddedAt($date);
+        $slova->setOslove('В начале было слово и слово было Бог и слово было у Бога.');
 
 //        $entityManager->persist($slova);
 //        $entityManager->flush();
@@ -96,7 +104,10 @@ class SlovaController extends Controller
 
         return $this->render('slova/index.html.twig', [
            'controller_name' => 'SlovaController',
-                  'slovo' => $slova->getSlovo(),
+             'slovo' => $slova->getSlovo(),
+             'author' => $slova->getAuthor(),
+             'addedAt' => $slova->getAddedAt()->format('Y-m-d H:i:s'),
+             'oslove' => $slova->getOslove(),
         ]);
     }
 
