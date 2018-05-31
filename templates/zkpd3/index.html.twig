@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Проект ЗКПД3 {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Привет, друг! ✅</h1>
+    Это проект Зкпд3 <br>
+    <br>
+    А это мои пробы пера:
+    <ul>
+        <li>lucky/number <code><a href="{{ '/lucky/number' }}">Счастливый номер</a></code></li>
+        <li>/slova <code><a href="{{ '/slova' }}">Слова</a></code></li>
+    </ul>
+</div>
+{% endblock %}

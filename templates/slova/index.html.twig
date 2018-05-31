@@ -1,25 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Проект Слово{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+{#
 <h3>{{ slovo }}</h3>
 <h4>{{ author }}</h4>
 <h5>{{ oslove }}</h5>
 <h6>{{ addedAt }}</h6>
-
+#}
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Приветствую, человек ✅</h1>
 
-    This friendly message is coming from:
+    Это проект "Слово".<br>
+    Здесь можно добавить слово и написать чем оно тебе нравится или не нравится.
     <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/SlovaController.php'|file_link(0) }}">src/Controller/SlovaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/slova/index.html.twig'|file_link(0) }}">templates/slova/index.html.twig</a></code></li>
+        <li>- <code><a href="{{ '/slovo' }}">Скажите Слово</a></code></li>
+        <li>- <code>-</code></li>
+        <li>- <code><a href="{{ '/' }}">В начало</a></code></li>
     </ul>
 </div>
+
+<a href="{{ '/' }}">В начало</a>
+
+
 {% endblock %}

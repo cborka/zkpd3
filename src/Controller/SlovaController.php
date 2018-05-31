@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-//use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -22,12 +22,17 @@ class SlovaController extends Controller
      */
     public function new(Request $request)
     {
+        $date = new \DateTime();
+
         $slova = new Slova();
-        $slova->setSlovo('НовоеСлово');
+        $slova->setSlovo('Хрен');
+        $slova->setAddedAt($date);
+        $slova->setAuthor('Пушкин');
+        $slova->setOslove('Это мой любимый овощ!');
 
         $form = $this->createFormBuilder($slova)
             ->add('slovo', TextType::class)
-            ->add('addedAt', DateTimeTzType::class)
+            ->add('addedAt', DateTimeType::class)
             ->add('author', TextType::class)
             ->add('oslove', TextType::class)
             ->add('save', SubmitType::class, array('label' => 'Скажите слово'))
@@ -75,7 +80,8 @@ class SlovaController extends Controller
 //        $entityManager->persist($slova);
 //        $entityManager->flush();
 
-        return new Response('Успех! Вставлено слово '. $slovo);
+        return new Response('Успех! Вставлено слово '. $slovo.'<br> 
+Ха-ха, шутка, на самом деле пока ничего никуда не вставляется :)');
 
 //        return $this->render('slova/index.html.twig', [
 //            'controller_name' => 'SlovaController',
