@@ -24,10 +24,13 @@ class SlovaController extends Controller
     {
         $date = new \DateTime();
 
+        $myname = $this->container->getParameter('my_name_is');
+
         $slova = new Slova();
         $slova->setSlovo('Хрен');
         $slova->setAddedAt($date);
-        $slova->setAuthor('Пушкин');
+//        $slova->setAuthor('Пушкин');
+        $slova->setAuthor($myname);
         $slova->setOslove('Это мой любимый овощ!');
 
         $form = $this->createFormBuilder($slova)

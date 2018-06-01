@@ -12,3 +12,17 @@ try {
 }
 
 echo $date->format('Y-m-d');
+?>
+<br>
+<a href="/"><h3>В начало</h3></a>
+<br>
+
+<script type="text/javascript">
+
+//    function xxx() { return "Привет - из - JavaScripts"; }
+
+//   ( function () { alert("Анонимная функция"); return "Привет - из - JavaScripts"; }() );
+
+</script>
+
+---
